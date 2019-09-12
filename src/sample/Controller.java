@@ -88,6 +88,23 @@ public class Controller {
         return mas;
     }
 
+    static int[] attackSimulate(int attack) {
+        Dice dice = new Dice();
+        int d20;
+        int ARRSIZE =30;
+        int rollNumb = 1000000;
+        int[] mas = new int[ARRSIZE];
+        for (int j = 10; j < ARRSIZE; j++) {
+            mas[j] = 0;
+            for (int i = 0; i < rollNumb; i++) {
+                d20 = dice.rd20();
+                if (attack + d20 > j) mas[j]++;
+            }
+        }
+        mas [mas.length - 1] = rollNumb;
+        return mas;
+    }
+
 
 
     static int[] Go(int n, int d) {
@@ -141,6 +158,23 @@ public class Controller {
         LineCh.getData().add(series1);
     }
 
+    static void paintSimAttack(int attack, int[] mas,LineChart LineCh) {
+        XYChart.Series<Number, Number> series2 = new XYChart.Series<>();
+        series2.setName("Атака +" + attack);
+        double proc;
+        for (int i = 1; i < mas.length - 1; i++) {
+            proc = mas[i];
+            proc /= mas[mas.length - 1];
+            proc *= 1000;
+            proc = Math.round(proc);
+            proc /= 10;
+            if (proc != 0) {
+                series2.getData().add(new XYChart.Data<>(i, proc));
+            }
+        }
+        LineCh.getData().add(series2);
+    }
+
     static double getAver(int[] mas) {
         double s = 0;
         for (int i = 1; i < mas.length; i++) {
@@ -171,9 +205,16 @@ public class Controller {
             textAr.appendText("for " + n + "d" + d + " = " + aver + "\n");
         }
         if (ACSimulate.isSelected()) {
-            int ac = Integer.parseInt(AC.getText());
-            int[] mas = Controller.acSimulate(ac);
-            Controller.paintSimAC(ac, mas, LineCh1);
+            if (simChoice.getValue() == 0) {
+                int ac = Integer.parseInt(AC.getText());
+                int[] mas = Controller.acSimulate(ac);
+                Controller.paintSimAC(ac, mas, LineCh1);
+            }
+            if (simChoice.getValue() == 1) {
+                int attack = Integer.parseInt(Damage.getText());
+                int[] mas = Controller.attackSimulate(attack);
+                Controller.paintSimAttack(attack, mas, LineCh1);
+            }
         }
     }
 
