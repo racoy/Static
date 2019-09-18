@@ -1,7 +1,7 @@
 package sample;
 
 public class SimulateHelper {
-    private static Dice dice;
+    private static Dice dice = new Dice();
     private static int rollNumb = 1000000;
 
     static int[] acSimulate(int ac) {
@@ -43,7 +43,7 @@ public class SimulateHelper {
         }
         for (int i = 0; i < rollNumb; i++) {
             twod6 = dice.roll(n, d);
-            //mas[twod6]++;
+            mas[twod6]++;
         }
         mas [0] = rollNumb;
         return mas;

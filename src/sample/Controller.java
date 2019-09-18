@@ -126,15 +126,13 @@ public class Controller {
     @FXML
     void Go1(ActionEvent event) {
         if (diceDistrib.isSelected()) {
-            //Controller.GoDistrub();
             int n = Integer.parseInt(n1.getText());
             int d = Integer.parseInt(d1.getText());
-            //if (d
             int[] mas = SimulateHelper.Go(n,d);
-            //Controller.paint(n, d, mas, LineCh1);
-            //double aver = SimulateHelper.getAver(mas);
-            //aver1.setText("" + aver);
-            //textAr.appendText("for " + n + "d" + d + " = " + aver + "\n");
+            Controller.paint(n, d, mas, LineCh1);
+            double aver = SimulateHelper.getAver(mas);
+            aver1.setText("" + aver);
+            textAr.appendText("for " + n + "d" + d + " = " + aver + "\n");
         }
         if (ACSimulate.isSelected()) {
             if (simChoice.getValue() == 0) {
