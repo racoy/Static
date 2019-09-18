@@ -37,11 +37,14 @@ public class Dice {
         if ((diceType != 4) && (diceType != 6) && (diceType != 8) && (diceType != 10) && (diceType != 12) && (diceType != 20) && (diceType != 100)) {
             return -1;
         }
-        int s = 0;
+        System.out.println(n);
+        System.out.println(diceType);
+        return n;
+        /*int s = 0;
         for (int i = 0; i < n; i++) {
             s += rnd.nextInt(diceType) + 1;
         }
-        return s;
+        return s;*/
     }
 
 

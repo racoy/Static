@@ -71,59 +71,6 @@ public class Controller {
         aver1.setText("");
     }
 
-    static int[] acSimulate(int ac) {
-        Dice dice = new Dice();
-        int d20;
-        int ARRSIZE =20;
-        int rollNumb = 1000000;
-        int[] mas = new int[ARRSIZE];
-        for (int j = 0; j < ARRSIZE; j++) {
-            mas[j] = 0;
-            for (int i = 0; i < rollNumb; i++) {
-                d20 = dice.rd20();
-                if (ac < d20 + j) mas[j]++;
-            }
-        }
-        mas [mas.length - 1] = rollNumb;
-        return mas;
-    }
-
-    static int[] attackSimulate(int attack) {
-        Dice dice = new Dice();
-        int d20;
-        int ARRSIZE =30;
-        int rollNumb = 1000000;
-        int[] mas = new int[ARRSIZE];
-        for (int j = 10; j < ARRSIZE; j++) {
-            mas[j] = 0;
-            for (int i = 0; i < rollNumb; i++) {
-                d20 = dice.rd20();
-                if (attack + d20 > j) mas[j]++;
-            }
-        }
-        mas [mas.length - 1] = rollNumb;
-        return mas;
-    }
-
-
-
-    static int[] Go(int n, int d) {
-        Dice dice = new Dice();
-        int twod6;
-        int ARRSIZE =15000;
-        int rollNumb = 1000000;
-        int[] mas = new int[ARRSIZE];
-        for (int i = 0; i < ARRSIZE; i++) {
-            mas[i] = 0;
-        }
-        for (int i = 0; i < rollNumb; i++) {
-            twod6 = dice.roll(n, d);
-            mas[twod6]++;
-        }
-        mas [0] = rollNumb;
-        return mas;
-    }
-
     static void paint(int n, int d, int[] mas,LineChart LineCh) {
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName(n + "d" + d);
@@ -175,22 +122,6 @@ public class Controller {
         LineCh.getData().add(series2);
     }
 
-    static double getAver(int[] mas) {
-        double s = 0;
-        for (int i = 1; i < mas.length; i++) {
-            s += mas[i]*i;
-        }
-        s /= mas[0];
-        s *= 100;
-        s = Math.round(s);
-        s /= 100;
-        return s;
-    }
-
-    static void GoDistrub() {
-
-    }
-
 
     @FXML
     void Go1(ActionEvent event) {
@@ -198,26 +129,24 @@ public class Controller {
             //Controller.GoDistrub();
             int n = Integer.parseInt(n1.getText());
             int d = Integer.parseInt(d1.getText());
-            int[] mas = Controller.Go(n,d);
-            Controller.paint(n, d, mas, LineCh1);
-            double aver = Controller.getAver(mas);
-            aver1.setText("" + aver);
-            textAr.appendText("for " + n + "d" + d + " = " + aver + "\n");
+            //if (d
+            int[] mas = SimulateHelper.Go(n,d);
+            //Controller.paint(n, d, mas, LineCh1);
+            //double aver = SimulateHelper.getAver(mas);
+            //aver1.setText("" + aver);
+            //textAr.appendText("for " + n + "d" + d + " = " + aver + "\n");
         }
         if (ACSimulate.isSelected()) {
             if (simChoice.getValue() == 0) {
                 int ac = Integer.parseInt(AC.getText());
-                int[] mas = Controller.acSimulate(ac);
+                int[] mas = SimulateHelper.acSimulate(ac);
                 Controller.paintSimAC(ac, mas, LineCh1);
             }
             if (simChoice.getValue() == 1) {
                 int attack = Integer.parseInt(Damage.getText());
-                int[] mas = Controller.attackSimulate(attack);
+                int[] mas = SimulateHelper.attackSimulate(attack);
                 Controller.paintSimAttack(attack, mas, LineCh1);
             }
         }
     }
-
-
-
 }
