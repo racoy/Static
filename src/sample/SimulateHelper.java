@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.chart.XYChart;
+
 public class SimulateHelper {
     private static Dice dice = new Dice();
     private static int rollNumb = 1000000;
@@ -45,20 +47,35 @@ public class SimulateHelper {
             twod6 = dice.roll(n, d);
             mas[twod6]++;
         }
-        mas [0] = rollNumb;
+        mas [mas.length - 1] = rollNumb;
         return mas;
     }
 
     static double getAver(int[] mas) {
         double s = 0;
-        for (int i = 1; i < mas.length; i++) {
+        for (int i = 0; i < mas.length - 1; i++) {
             s += mas[i]*i;
         }
-        s /= mas[0];
+        s /= mas[mas.length - 1];
         s *= 100;
         s = Math.round(s);
         s /= 100;
         return s;
+    }
+
+    static XYChart.Series<Number, Number> getProc(XYChart.Series<Number, Number> series, int[] mas) {
+        double proc;
+        for (int i = 0; i < mas.length - 1; i++) {
+            proc = mas[i];
+            proc /= mas[mas.length - 1];
+            proc *= 1000;
+            proc = Math.round(proc);
+            proc /= 10;
+            if (proc != 0) {
+                series.getData().add(new XYChart.Data<>(i, proc));
+            }
+        }
+        return series;
     }
 
 }

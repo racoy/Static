@@ -74,51 +74,21 @@ public class Controller {
     static void paint(int n, int d, int[] mas,LineChart LineCh) {
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName(n + "d" + d);
-        double proc;
-        for (int i = 1; i < mas.length; i++) {
-                proc = mas[i];
-                proc /= mas[0];
-                proc *= 1000;
-                proc = Math.round(proc);
-                proc /= 10;
-                if (proc != 0) {
-                    series1.getData().add(new XYChart.Data<>(i, proc));
-                }
-        }
+        SimulateHelper.getProc(series1, mas);
         LineCh.getData().add(series1);
     }
 
     static void paintSimAC(int ac, int[] mas,LineChart LineCh) {
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("КД = " + ac);
-        double proc;
-        for (int i = 1; i < mas.length - 1; i++) {
-            proc = mas[i];
-            proc /= mas[mas.length - 1];
-            proc *= 1000;
-            proc = Math.round(proc);
-            proc /= 10;
-            if (proc != 0) {
-                series1.getData().add(new XYChart.Data<>(i, proc));
-            }
-        }
+        series1 = SimulateHelper.getProc(series1, mas);
         LineCh.getData().add(series1);
     }
 
-    static void paintSimAttack(int attack, int[] mas,LineChart LineCh) {
+    static void paintSimAttack(int attack, int[] mas, LineChart LineCh) {
         XYChart.Series<Number, Number> series2 = new XYChart.Series<>();
         series2.setName("Атака +" + attack);
-        double proc;
-        for (int i = 1; i < mas.length - 1; i++) {
-            proc = mas[i];
-            proc /= mas[mas.length - 1];
-            proc *= 1000;
-            proc = Math.round(proc);
-            proc /= 10;
-            if (proc != 0) {
-                series2.getData().add(new XYChart.Data<>(i, proc));
-            }
-        }
+        series2 = SimulateHelper.getProc(series2, mas);
         LineCh.getData().add(series2);
     }
 
