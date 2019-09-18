@@ -81,14 +81,14 @@ public class Controller {
     static void paintSimAC(int ac, int[] mas,LineChart LineCh) {
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("КД = " + ac);
-        series1 = SimulateHelper.getProc(series1, mas);
+        SimulateHelper.getProc(series1, mas);
         LineCh.getData().add(series1);
     }
 
     static void paintSimAttack(int attack, int[] mas, LineChart LineCh) {
         XYChart.Series<Number, Number> series2 = new XYChart.Series<>();
         series2.setName("Атака +" + attack);
-        series2 = SimulateHelper.getProc(series2, mas);
+        SimulateHelper.getProc(series2, mas);
         LineCh.getData().add(series2);
     }
 
