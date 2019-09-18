@@ -2,7 +2,7 @@ package sample;
 
 import javafx.scene.chart.XYChart;
 
-public class SimulateHelper {
+class SimulateHelper {
     private static Dice dice = new Dice();
     private static int rollNumb = 1000000;
 
@@ -63,7 +63,7 @@ public class SimulateHelper {
         return s;
     }
 
-    static XYChart.Series<Number, Number> getProc(XYChart.Series<Number, Number> series, int[] mas) {
+    static void getProc(XYChart.Series<Number, Number> series, int[] mas) {
         double proc;
         for (int i = 0; i < mas.length - 1; i++) {
             proc = mas[i];
@@ -75,7 +75,6 @@ public class SimulateHelper {
                 series.getData().add(new XYChart.Data<>(i, proc));
             }
         }
-        return series;
     }
 
 }
