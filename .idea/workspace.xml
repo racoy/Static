@@ -223,7 +223,16 @@
       <workItem from="1568289739951" duration="2076000" />
       <workItem from="1569249918070" duration="3088000" />
       <workItem from="1571641095409" duration="1005000" />
+      <workItem from="1571645878289" duration="259000" />
     </task>
+    <task id="LOCAL-00001" summary="final">
+      <created>1571646123507</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571646123507</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,5 +254,7 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
 </project>
