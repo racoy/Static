@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Tab;
 import javafx.scene.control.Slider;
+import sample.Dice;
+import sample.SimulateHelper;
 
 
 public class Controller {
