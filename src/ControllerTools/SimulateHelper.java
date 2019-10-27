@@ -1,7 +1,6 @@
-package sample;
+package ControllerTools;
 
 import javafx.scene.chart.XYChart;
-import sample.Dice;
 
 class SimulateHelper {
     private static Dice dice = new Dice();

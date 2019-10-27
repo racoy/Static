@@ -1,4 +1,4 @@
-package sample;
+package ControllerTools;
 
 import java.util.Random;
 

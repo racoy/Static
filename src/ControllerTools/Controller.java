@@ -1,22 +1,18 @@
-package sample;
+package ControllerTools;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Tab;
 import javafx.scene.control.Slider;
-import sample.Dice;
-import sample.SimulateHelper;
 
 
 public class Controller {
